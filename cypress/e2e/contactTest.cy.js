@@ -5,8 +5,6 @@ import {faker} from '@faker-js/faker'
 import Fileclass from './pageObject/fileuploadPage.js';
 
 let userdata;
-let personName="neha thakur";
-let personToDel="Bryant Botsford";
 const contactsPage = new  ContactsPage();
 
 describe('contacts test',()=>{
@@ -35,13 +33,13 @@ describe('contacts test',()=>{
         contactsPage.fillCompanyName(faker.company.name())
         contactsPage.selectCountry()
         contactsPage.fillCity(faker.location.city())
-        contactsPage.clickSubmit()
+        contactsPage.clickSubmitAndVerify()
     })
 
-    it('edit any contact',()=>{
+    it('edit latest contact',()=>{
         cy.visit('/')
         contactsPage.clickContactsLink();
-        cy.get('a').contains(personName).click()
+        contactsPage.selectLastPerson()
         contactsPage.clickEditContacts()
 
         const fileclass = new Fileclass();
@@ -53,25 +51,26 @@ describe('contacts test',()=>{
         contactsPage.fillCompanyName(faker.company.name())
         contactsPage.selectCountry()
         contactsPage.fillCity(faker.location.city())
-        contactsPage.clickSubmit()
-        cy.contains('Contact saved successfully')
+        contactsPage.clickSubmitAndVerify()
+        
 
     })
 
-    it('add a note to any contact',()=>{
+    it('add a note to latest contact',()=>{
         cy.visit('/')
         contactsPage.clickContactsLink();
-        contactsPage.clickOnPersonNametoEdit(personName)
+        contactsPage.selectLastPerson()
         contactsPage.addNoteAndSubmit(faker.lorem.lines())
     })
 
-    it.only('delete contact of any person',()=>{
+
+
+    it('delete contact of latest person',()=>{
        cy.visit('/')
        contactsPage.clickContactsLink();
-       contactsPage.clickOnPersonNametoEdit(personToDel)
+       contactsPage.selectLastPerson()
        contactsPage.clickOnDeleteAndCnfirmDelete()
        contactsPage.verifyContactDeleted()
     })
-
 
 })

@@ -11,7 +11,7 @@ describe('template spec', () => {
     before(()=>{
         cy.fixture("logindata").then((data)=>{
             userdata=data;
-      })
+        })
     })
     
     beforeEach( () => {
