@@ -1,20 +1,19 @@
+
+const locators={
+    
+    choosefileOption :'#file',
+
+}
+
 class  Fileclass{
 
 
-    get choosefileOption(){
-        return  cy.get('#file');
-      }
-  
-      get updateProfileOption(){
-          return cy.get('span').contains('Update Profile');
-  
-      }
-      clickchoosefile(filename){
-        this.choosefileOption.attachFile(filename);
+    clickchoosefile(filename){
+        cy.get(locators.choosefileOption).attachFile(filename);
     }
 
     clickOnupdateProfileOption(){
-        this.updateProfileOption.click()
+        cy.get('span').contains('Update Profile').click()
     }
 
 }

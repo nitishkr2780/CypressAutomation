@@ -1,32 +1,24 @@
+
+const locators={
+    
+    mainprofileSetting:'button[type="submit"]',
+    onlineStatus:"//span[normalize-space()='Online']",
+    profilesettingOption:'a span:contains("Profile Settings")'
+}
+
 class ProfileSettingsPage {
-    get mainprofileSetting() {
-        return cy.get('button[type="submit"]');
-    }
-
-    get onlineStatus() {
-        return cy.xpath("//span[normalize-space()='Online']");
-    }
-
-    get profilesettingOption(){
-
-        return cy.get('a span:contains("Profile Settings")');
-
-    }
-
-
+   
     clickmainprofileSetting() {
 
-        this.mainprofileSetting.click({ multiple: true });
+        cy.get(locators.mainprofileSetting).click({ multiple: true });
     }
 
     verifyOnlineStatusVisibility() {
-        this.onlineStatus.should('be.visible');
+        cy.xpath(locators.onlineStatus).should('be.visible');
     }
     clickonProfileSetting(){
-        this.profilesettingOption.click();
+        cy.get(locators.profilesettingOption).click();
     }
-
-    
 
 }
 

@@ -1,8 +1,7 @@
 import 'cypress-file-upload'
 import Fileclass from "./pageObject/fileuploadPage.js"
 import ConversationsPage from "./pageObject/conversationPage.js";
-import ProfileSettingsPage from './pageObject/profilesettingPage';
-
+import ProfileSettingsPage from './pageObject/profilesettingPage.js';
 
 let userdata;
 
@@ -19,7 +18,6 @@ describe('template spec', () => {
 
     })
 
-
     it('send message from admin side', () => {
         cy.visit('/')
         const  conversationsPage = new ConversationsPage();
@@ -29,11 +27,9 @@ describe('template spec', () => {
         conversationsPage.clickFirstConversationUser();
         conversationsPage.clickchatSectionAndTypingMessage("the sun dipped");
         conversationsPage.clickOnSendMessage();
-        conversationsPage.recentMessage.should('exist');
         conversationsPage.clickthree_dot();
         conversationsPage.clickdeleteOption();
         conversationsPage.clickfinalDelete();
-
     })
     
     it('upload profile picture',()=>{

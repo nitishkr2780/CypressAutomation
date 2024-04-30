@@ -1,6 +1,5 @@
 describe('user end Bot access',()=>{
     
-    
     it('iframe1',()=>{
           cy.visit("https://nitishkr2780.github.io/chatwootBot/")
           cy.wait(2000)

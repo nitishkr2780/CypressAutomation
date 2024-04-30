@@ -19,7 +19,6 @@ describe('contacts test',()=>{
         cy.login(userdata.username,userdata.password)
     })
 
-
     it('create new contact',()=>{
         cy.visit('/')
         contactsPage.clickContactsLink();
@@ -52,8 +51,13 @@ describe('contacts test',()=>{
         contactsPage.selectCountry()
         contactsPage.fillCity(faker.location.city())
         contactsPage.clickSubmitAndVerify()
-        
+    })
 
+    it('setting label  of latest contacts',()=>{
+        cy.visit('/')
+        contactsPage.clickContactsLink();
+        contactsPage.selectLastPerson()
+        
     })
 
     it('add a note to latest contact',()=>{
@@ -63,8 +67,6 @@ describe('contacts test',()=>{
         contactsPage.addNoteAndSubmit(faker.lorem.lines())
     })
 
-
-
     it('delete contact of latest person',()=>{
        cy.visit('/')
        contactsPage.clickContactsLink();
@@ -72,5 +74,4 @@ describe('contacts test',()=>{
        contactsPage.clickOnDeleteAndCnfirmDelete()
        contactsPage.verifyContactDeleted()
     })
-
 })

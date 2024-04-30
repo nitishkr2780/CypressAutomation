@@ -1,18 +1,19 @@
+
+const locators={
+    
+    settingsLink:'[href="/app/accounts/96049/settings"]',
+    submitButton:'[data-testid="submit_button"]'
+
+}
+
 class SettingsPage {
-    get settingsLink() {
-        return cy.get('[href="/app/accounts/96049/settings"]');
-    }
-
-    get submitButton() {
-        return cy.get('[data-testid="submit_button"]');
-    }
-
+   
     clickSettingsLink() {
-        this.settingsLink.click();
+        cy.get(locators.settingsLink).click();
     }
 
     clickSubmitButton() {
-        this.submitButton.click();
+        cy.get(locators.submitButton).click();
     }
 }
 

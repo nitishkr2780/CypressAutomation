@@ -1,4 +1,5 @@
 const locators = {
+
   contactIcon: '[href="/app/accounts/96049/contacts"]',
   nameInput: 'input[placeholder="Enter the full name of the contact"]',
   emailInput: 'input[placeholder="Enter the email address of the contact"]',
@@ -11,12 +12,13 @@ const locators = {
   InputphoneNo: 'input[placeholder="Enter the phone number of the contact"]',
   addNote: 'p[data-placeholder="Add a note"]',
   lastContact:'table[class="ve-table-content ve-table-border-x"]>tbody>tr:last-child>td:first-child a',
-  editIcon:"//*[local-name()='svg'][@class='flex-shrink-0 icon icon--font edit']"
-  
+  editIcon:"//*[local-name()='svg'][@class='flex-shrink-0 icon icon--font edit']",
+  deleteIcon:"//*[local-name()='svg'][@class='flex-shrink-0 icon icon--font delete']"
+
 };
 
 class ContactsPage {
-  clickContactsLink() {
+    clickContactsLink() {
     cy.get(locators.contactIcon).click();
   }
 
@@ -34,28 +36,12 @@ class ContactsPage {
 
   selectLastPerson(){
     cy.get(locators.lastContact).click()
+    cy.xpath("//button[normalize-space()='Contacts']").should('be.visible')
   }
 
   clickEditContacts() {
-
-    cy.xpath("//button[normalize-space()='Contacts']").should('be.visible')
     cy.xpath(locators.editIcon).click()
     cy.get('div[class="settings-item"] label span').should('be.visible')
-    
-
-    // cy.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[3]/button[2]/*[name()='svg'][1]").click();
-
-    // i tried these  ,  but i failed to  get locator
-    // cy.get('.button.smooth.button--only-icon.small.primary.has-tooltip').click()
-    // cy.xpath("//button[@class='button smooth button--only-icon small primary has-tooltip']").click()
-    // cy.get('.button smooth button--only-icon small primary has-tooltip').click()
-
-    // cy.xpath("//button[@type='submit'][@class='button smooth button--only-icon small primary has-tooltip']").click()
-    // cy.contains('button', '$t(\'EDIT_CONTACT.BUTTON_LABEL\')').click();
-
-    // cy.xpath("//*[name()='path' and contains(@d,'M21.03 2.9')]").click()
-    // cy.xpath("//button[@class='button smooth button--only-icon small primary has-tooltip v-tooltip-open']//*[name()='svg']").click()
-    // cy.get('button[data-original-title]:nth-child(2)').click()
   }
 
   fillName(fullname) {
@@ -101,14 +87,17 @@ class ContactsPage {
   }
 
   clickOnDeleteAndCnfirmDelete() {
-    cy.xpath(
-      "/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[3]/button[4]/*[name()='svg'][1]"
-    ).click(); //same not able to find
+    cy.xpath(locators.deleteIcon).click(); 
     cy.get("span").contains("Yes, Delete").click();
   }
 
   verifyContactDeleted() {
     cy.contains("Contact deleted successfully").should("exist");
+  }
+
+  clickAndSelectlabel(){
+    cy.get('span').contains('Add Labels').click()
+    cy.get('span[title="group1"]').click()
   }
 
 }

@@ -1,30 +1,39 @@
+const locators ={
+    
+    txtUserName:"[data-testid='email_input']",
+    txtPassword:"[data-testid='password_input']",
+    btnSubmit:"[data-testid='submit_button']",
+    txtloginTitle:"//h2[normalize-space()='Login to Chatwoot']",
+    imgchatwoot: 'img[alt="Chatwoot"]'
+
+}
+
 class Login{
 
-     txtUserName="[data-testid='email_input']";
-     txtPassword="[data-testid='password_input']";
-     btnSubmit="[data-testid='submit_button']";
-     txtloginTitle="//h2[normalize-space()='Login to Chatwoot']";
-
-
-
+    
      setUsername(username){
-      cy.get(this.txtUserName).clear() 
-      cy.get(this.txtUserName).type(username)
+      cy.get(locators.txtUserName).clear() 
+      cy.get(locators.txtUserName).type(username)
 
      }
 
      setPassword(password){
-      cy.get(this.txtPassword).clear()
-      cy.get(this.txtPassword).type(password)
+      cy.get(locators.txtPassword).clear()
+      cy.get(locators.txtPassword).type(password)
      }
 
 
      clickSubmit(){
-      cy.get(this.btnSubmit).click()
+      cy.get(locators.btnSubmit).click()
      }
 
      loginToPageTitleDisplayed(){
-         return cy.xpath(this.txtloginTitle)
-     }
+          cy.xpath(locators.txtloginTitle).should('exist');
+    }
+    chatwootTitleDisplayed(){
+        cy.get(locators.imgchatwoot).should('be.visible');
+    }
+
+
 }
 export  default Login;

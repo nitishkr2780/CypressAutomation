@@ -1,17 +1,18 @@
+
+const locators={
+    
+    btnProfile:"button[type='submit']",
+    btnLogout:"//span[normalize-space()='Logout']"
+}
+
 class Logout{
-
-    btnProfile="button[type='submit']";
-    btnLogout="//span[normalize-space()='Logout']";
-
     clickProfile(){
-        cy.get(this.btnProfile).click()
+        cy.get(locators.btnProfile).click()
 
     }
 
-
     clickLogout(){
-        cy.xpath(this.btnLogout).click();
-
+        cy.xpath(locators.btnLogout).click();
     }
     
 }
