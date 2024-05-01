@@ -3,6 +3,9 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   chromeWebSecurity: false,
   reporter: 'cypress-mochawesome-reporter',
+  defaultCommandTimeout: 10000,
+  viewportWidth: 1250,
+  viewportHeight: 800,
 
   e2e: {
     baseUrl:'https://app.chatwoot.com/app/',

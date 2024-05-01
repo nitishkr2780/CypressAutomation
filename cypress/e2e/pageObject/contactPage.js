@@ -8,12 +8,13 @@ const locators = {
   cityName: 'input[placeholder="Enter the city name"',
   btnSubmit: 'button[data-testid="submit_button"] span',
   countryname: "Anguilla (AI)",
+  countryCodeDrp:'.phone-input > .cursor-pointer',
   countryPhCode: "+91",
   InputphoneNo: 'input[placeholder="Enter the phone number of the contact"]',
   addNote: 'p[data-placeholder="Add a note"]',
   lastContact:'table[class="ve-table-content ve-table-border-x"]>tbody>tr:last-child>td:first-child a',
-  editIcon:"//*[local-name()='svg'][@class='flex-shrink-0 icon icon--font edit']",
-  deleteIcon:"//*[local-name()='svg'][@class='flex-shrink-0 icon icon--font delete']"
+  editIcon:'[data-original-title="$t(\'EDIT_CONTACT.BUTTON_LABEL\')"]',
+  deleteIcon:'[data-original-title="$t(\'DELETE_CONTACT.BUTTON_LABEL\')"]'
 
 };
 
@@ -40,7 +41,7 @@ class ContactsPage {
   }
 
   clickEditContacts() {
-    cy.xpath(locators.editIcon).click()
+    cy.get(locators.editIcon).click()
     cy.get('div[class="settings-item"] label span').should('be.visible')
   }
 
@@ -57,7 +58,7 @@ class ContactsPage {
   }
 
   selectCountryCode(code) {
-    cy.get(".cursor-pointer").click();
+    cy.get(locators.countryCodeDrp).click();
     cy.get(".country-dropdown--item").contains(locators.countryPhCode).click();
   }
   fillMobileNo(phNo) {
@@ -87,8 +88,8 @@ class ContactsPage {
   }
 
   clickOnDeleteAndCnfirmDelete() {
-    cy.xpath(locators.deleteIcon).click(); 
-    cy.get("span").contains("Yes, Delete").click();
+    cy.get(locators.deleteIcon).click();
+    cy.get('.justify-end > .smooth > .button__content').click()
   }
 
   verifyContactDeleted() {
