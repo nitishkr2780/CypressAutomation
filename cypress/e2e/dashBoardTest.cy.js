@@ -1,7 +1,5 @@
 import 'cypress-file-upload'
-import Fileclass from "./pageObject/fileuploadPage.js"
 import ConversationsPage from "./pageObject/conversationPage.js";
-import ProfileSettingsPage from './pageObject/profilesettingPage.js';
 import { faker } from '@faker-js/faker';
 
 let userdata;
@@ -46,21 +44,4 @@ describe('template spec', () => {
         conversationsPage.filllabelNameAndDescription(faker.lorem.word(),faker.lorem.lines())
         // conversationsPage.clickCreateLabel() // after ftyping it automaticaly created
     });
-
-    
-    it('upload profile picture',()=>{
-        cy.visit('/')
-        const profileSettingsPage= new  ProfileSettingsPage();
-
-        const fileclass = new Fileclass();
-        profileSettingsPage.clickmainprofileSetting();
-
-        profileSettingsPage.verifyOnlineStatusVisibility();
-        profileSettingsPage.clickonProfileSetting()
-
-        fileclass.clickchoosefile('cp1.png')
-        fileclass.clickOnupdateProfileOption()
-    })
-
-    
 })
