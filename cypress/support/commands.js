@@ -46,8 +46,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
       cacheAcrossSpecs :true
 
     })
-
-   
-
+    
+  
   })
 

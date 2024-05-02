@@ -6,6 +6,13 @@ import Report from "./pageObject/reportPage.js"
 import ConversationsPage from "./pageObject/conversationPage.js"
 let userdata;
 
+const  conversationsPage = new ConversationsPage();
+const contactsPage = new  ContactsPage();
+const profileSettingPage=  new ProfileSettingsPage();
+const settingsPage = new SettingsPage();
+const report = new Report();
+
+
 describe('template spec', () => {
 
     before(()=>{
@@ -21,24 +28,18 @@ describe('template spec', () => {
 
     it('navigate to conversation', () => {
         cy.visit('/')
-        const  conversationsPage = new ConversationsPage();
-
         conversationsPage.clickconversationIcon();
     })
     
     it('navigate to contacts',()=>
     {
         cy.visit('/')
-        const contactsPage = new  ContactsPage();
-
         contactsPage.clickContactsLink();
         contactsPage.verifyContactsHeaderVisibility();
     })
 
     it('navigate to main profile setting',()=>{
         cy.visit('/')
-        const profileSettingPage=  new ProfileSettingsPage();
-
         profileSettingPage.clickmainprofileSetting();
         profileSettingPage.verifyOnlineStatusVisibility();
         profileSettingPage.clickonProfileSetting();
@@ -47,9 +48,6 @@ describe('template spec', () => {
 
     it('navigate to  setting',()=>{
         cy.visit('/')
-
-        const settingsPage = new SettingsPage();
-
         settingsPage.clickSettingsLink();
         settingsPage.clickSubmitButton();
 
@@ -57,9 +55,6 @@ describe('template spec', () => {
 
     it('navigate to  report',()=>{
         cy.visit('/')
-
-        const report = new Report();
-        
         report.clickreportLink();
     })
 })

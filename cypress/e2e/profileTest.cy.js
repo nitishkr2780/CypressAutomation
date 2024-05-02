@@ -36,7 +36,7 @@ describe('Profile Test',()=>{
         profileSettingsPage.changeToOffline()
     })
 
-    it.only('upload profile picture',()=>{
+    it('upload profile picture',()=>{
         cy.visit('/')
         profileSettingsPage.clickmainprofileSetting();
 

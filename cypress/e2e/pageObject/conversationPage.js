@@ -74,6 +74,8 @@ class ConversationsPage {
     clickfinalDelete(){
         cy.get(locators.finalDelete).click()
     }
+
+
 }
 
 export default  ConversationsPage;

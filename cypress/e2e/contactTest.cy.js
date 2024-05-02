@@ -2,10 +2,12 @@ import 'cypress-file-upload'
 
 import ContactsPage from './pageObject/contactPage.js';
 import {faker} from '@faker-js/faker'  
-import Fileclass from './pageObject/fileuploadPage.js';
+import ProfileSettingsPage from './pageObject/profilesettingPage.js';
 
 let userdata;
 const contactsPage = new  ContactsPage();
+const profileSettingsPage = new ProfileSettingsPage();
+
 
 describe('contacts test',()=>{
 
@@ -40,10 +42,7 @@ describe('contacts test',()=>{
         contactsPage.clickContactsLink();
         contactsPage.selectLastPerson()
         contactsPage.clickEditContacts()
-
-        const fileclass = new Fileclass();
-
-        // fileclass.clickchoosefile('cp1.png')     //if  new profile we have to  upload then enable
+        // profileSettingsPage.clickchoosefile('cp1.png')     //if  new profile we have to  upload then enable
         contactsPage.fillEmail(faker.internet.email())
         contactsPage.fillBio(faker.lorem.words(4))
         contactsPage.fillMobileNo(faker.string.numeric('##########'))

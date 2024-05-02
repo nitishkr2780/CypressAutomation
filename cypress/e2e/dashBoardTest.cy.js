@@ -6,6 +6,8 @@ let userdata;
 let userOption='all'
 const  conversationsPage = new ConversationsPage();
 
+let pname;
+
 describe('template spec', () => {
 
     before(()=>{
@@ -24,7 +26,7 @@ describe('template spec', () => {
         conversationsPage.clickconversationIcon();
         conversationsPage.clickAllIcon();
         conversationsPage.clickLastConversationUser();
-        conversationsPage.clickchatSectionAndTypingMessage("the sun dipped");
+        conversationsPage.clickchatSectionAndTypingMessage(faker.lorem.word(4));
         conversationsPage.clickOnSendMessage();
         conversationsPage.clickthree_dot();
         conversationsPage.clickdeleteOption();
@@ -44,4 +46,5 @@ describe('template spec', () => {
         conversationsPage.filllabelNameAndDescription(faker.lorem.word(),faker.lorem.lines())
         // conversationsPage.clickCreateLabel() // after ftyping it automaticaly created
     });
+
 })
