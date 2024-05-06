@@ -56,7 +56,7 @@ describe('contacts test',()=>{
         cy.visit('/')
         contactsPage.clickContactsLink();
         contactsPage.selectLastPerson()
-        
+        contactsPage.clickAndSelectlabel()
     })
 
     it('add a note to latest contact',()=>{

@@ -10,22 +10,16 @@
          "versions": [
             "latest-1"
          ]
-      },
-      {
-         "browser": "Firefox",
-         "platform": "Windows 10",
-         "versions": [
-            "latest-1"
-         ]
       }
+      
    ],
    "run_settings": {
       "reporter_config_file": "base_reporter_config.json",
-      "build_name": "build-name",
+      "build_name": "build-cypress",
       "parallels": 1,
-      "specs": "cypress/e2e/dashBoard.cy.js",
+      "specs": "/home/nitish/Desktop/CypressAutomation/cypress/e2e/dashBoardTest.cy.js",
       "ignore_files": "",
-      "network": false,
+      "network": true,
       "headless": false,
       "npm_dependencies": {
          "cypress": "^13.7.3"

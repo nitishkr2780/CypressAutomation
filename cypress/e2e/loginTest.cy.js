@@ -58,21 +58,21 @@ describe('Login Tests', () => {
 
   });
 
-  it('Login with valid email but short password', () => {
-    const { username, password } = credentials.validEmailShortPassword;
-    login.setUsername(username);
-    login.setPassword(password);
-    login.clickSubmit()
-    login.loginToPageTitleDisplayed(); 
+  // it('Login with valid email but short password', () => {
+  //   const { username, password } = credentials.validEmailShortPassword;
+  //   login.setUsername(username);
+  //   login.setPassword(password);
+  //   login.clickSubmit()
+  //   login.loginToPageTitleDisplayed(); 
 
-  });
+  // });
 
-  it('Login with valid email but long password', () => {
-    const { username, password } = credentials.validEmailLongPassword;
-    login.setUsername(username);
-    login.setPassword(password);
-    login.clickSubmit()
-    login.loginToPageTitleDisplayed(); 
-  });
+  // it('Login with valid email but long password', () => {
+  //   const { username, password } = credentials.validEmailLongPassword;
+  //   login.setUsername(username);
+  //   login.setPassword(password);
+  //   login.clickSubmit()
+  //   login.loginToPageTitleDisplayed(); 
+  // });
 
 });

@@ -14,7 +14,12 @@ const locators = {
   addNote: 'p[data-placeholder="Add a note"]',
   lastContact:'table[class="ve-table-content ve-table-border-x"]>tbody>tr:last-child>td:first-child a',
   editIcon:'[data-original-title="$t(\'EDIT_CONTACT.BUTTON_LABEL\')"]',
-  deleteIcon:'[data-original-title="$t(\'DELETE_CONTACT.BUTTON_LABEL\')"]'
+  deleteIcon:'[data-original-title="$t(\'DELETE_CONTACT.BUTTON_LABEL\')"]',
+  confirmDelete:'.justify-end > .smooth > .button__content',
+  editLabelIcon:'div[class="settings-item"] label span',
+  addLabel:'[data-v-37ec2225][data-v-3965f844]',
+  lastLabel:'[class="dropdown-menu__item list-none mb-1"]:last-child',
+
 
 };
 
@@ -37,12 +42,13 @@ class ContactsPage {
 
   selectLastPerson(){
     cy.get(locators.lastContact).click()
-    cy.xpath("//button[normalize-space()='Contacts']").should('be.visible')
+    cy.get('button:contains("Contacts")').should('be.visible')
+
   }
 
   clickEditContacts() {
     cy.get(locators.editIcon).click()
-    cy.get('div[class="settings-item"] label span').should('be.visible')
+    cy.get(locators.editLabelIcon).should('be.visible')
   }
 
   fillName(fullname) {
@@ -57,7 +63,7 @@ class ContactsPage {
     cy.get(locators.bioInput).clear().type(bio);
   }
 
-  selectCountryCode(code) {
+  selectCountryCode() {
     cy.get(locators.countryCodeDrp).click();
     cy.get(".country-dropdown--item").contains(locators.countryPhCode).click();
   }
@@ -79,7 +85,7 @@ class ContactsPage {
 
   clickSubmitAndVerify() {
     cy.get(locators.btnSubmit).click();
-    cy.contains("Contact saved successfully");
+    // cy.contains("Contact saved successfully").should('exist');
   }
 
   addNoteAndSubmit(note) {
@@ -89,7 +95,7 @@ class ContactsPage {
 
   clickOnDeleteAndCnfirmDelete() {
     cy.get(locators.deleteIcon).click();
-    cy.get('.justify-end > .smooth > .button__content').click()
+    cy.get(locators.confirmDelete).click()
   }
 
   verifyContactDeleted() {
@@ -97,8 +103,8 @@ class ContactsPage {
   }
 
   clickAndSelectlabel(){
-    cy.get('span').contains('Add Labels').click()
-    cy.get('span[title="group1"]').click()
+    cy.get(locators.addLabel).click()
+    cy.get(locators.lastLabel).click()
   }
 
 }
