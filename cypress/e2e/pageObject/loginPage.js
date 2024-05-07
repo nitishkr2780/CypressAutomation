@@ -33,6 +33,8 @@ class Login{
     chatwootTitleDisplayed(){
         cy.get(locators.imgchatwoot).should('be.visible');
     }
+    
+
 
 
 }

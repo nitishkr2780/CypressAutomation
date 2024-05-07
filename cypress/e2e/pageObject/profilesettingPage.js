@@ -5,7 +5,8 @@ const locators={
     onlineStatus:"//span[normalize-space()='Online']",
     profilesettingOption:'a span:contains("Profile Settings")',
     offlineBtn:'span.button__content.text-left.rtl\\:text-right',
-    choosefileOption :'#file'
+    choosefileOption :'[class="relative rounded-xl h-[72px] w-[72px] cursor-pointe group"]> input[type="file"]',
+    filePathFromDevice:'/home/nitish/Desktop/CypressAutomation/cypress/fixtures/profile.jpeg'
 }
 
 class ProfileSettingsPage {
@@ -32,9 +33,9 @@ class ProfileSettingsPage {
     clickonProfileSetting(){
         cy.get(locators.profilesettingOption).click();
     }
-    clickchoosefile(filename){
-
-        cy.get(locators.choosefileOption).attachFile(filename)
+    clickchoosefile(){
+        cy.get(locators.choosefileOption).as('fileInput');
+        cy.get('@fileInput').selectFile(locators.filePathFromDevice,{ force: true })
 
         /* 2nd method 
         cy.get(locators.choosefileOption).as('fileInput');
@@ -49,9 +50,16 @@ class ProfileSettingsPage {
         */
         
     }
-
     clickOnupdateProfileOption(){
         cy.get('span').contains('Update Profile').click()
+    }
+
+    clickLogout(){
+        cy.get('span').contains('Logout').click()
+    }
+
+    verifyLogout(){
+        cy.url().should('contain','https://www.chatwoot.com/')
     }
 
 }

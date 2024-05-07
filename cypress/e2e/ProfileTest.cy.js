@@ -39,11 +39,10 @@ describe('Profile Test',()=>{
     it('upload profile picture',()=>{
         cy.visit('/')
         profileSettingsPage.clickmainprofileSetting();
-
         profileSettingsPage.verifyOnlineStatusVisibility();
         profileSettingsPage.clickonProfileSetting()
-
-        profileSettingsPage.clickchoosefile('cp1.png')
-        profileSettingsPage.clickOnupdateProfileOption()
-    })
+        profileSettingsPage.clickchoosefile()
+        profileSettingsPage.clickOnupdateProfileOption() 
+     });
+        
 })

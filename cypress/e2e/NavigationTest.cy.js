@@ -1,7 +1,7 @@
 
-import ContactsPage from "./pageObject/contactPage"
-import ProfileSettingsPage from "./pageObject/profilesettingPage"
-import SettingsPage from "./pageObject/settingPage"
+import ContactsPage from "./pageObject/contactPage.js"
+import ProfileSettingsPage from "./pageObject/profilesettingPage.js"
+import SettingsPage from "./pageObject/settingPage.js"
 import Report from "./pageObject/reportPage.js"
 import ConversationsPage from "./pageObject/conversationPage.js"
 let userdata;

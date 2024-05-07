@@ -1,6 +1,9 @@
 import Login from "./pageObject/loginPage";
+import ProfileSettingsPage from "./pageObject/profilesettingPage";
 
 const login = new Login();
+const profileSettingPage=  new ProfileSettingsPage();
+
 
 describe('Login Tests', () => {
   const credentials = require('../fixtures/credentialData').credentials;
@@ -58,21 +61,14 @@ describe('Login Tests', () => {
 
   });
 
-  // it('Login with valid email but short password', () => {
-  //   const { username, password } = credentials.validEmailShortPassword;
-  //   login.setUsername(username);
-  //   login.setPassword(password);
-  //   login.clickSubmit()
-  //   login.loginToPageTitleDisplayed(); 
-
-  // });
-
-  // it('Login with valid email but long password', () => {
-  //   const { username, password } = credentials.validEmailLongPassword;
-  //   login.setUsername(username);
-  //   login.setPassword(password);
-  //   login.clickSubmit()
-  //   login.loginToPageTitleDisplayed(); 
-  // });
+  it('logout from the chatwoot',()=>{
+    const { username, password } = credentials.validCredentials;
+    login.setUsername(username);
+    login.setPassword(password);
+    login.clickSubmit()
+    profileSettingPage.clickmainprofileSetting();
+    profileSettingPage.clickLogout()
+    profileSettingPage.verifyLogout()
+})
 
 });
